@@ -4,19 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/test.ts"
+    "dev": "nodemon src/server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.11.0",
+    "nodemon": "^3.0.3",
     "typescript": "^5.3.3"
   },
   "dependencies": {
     "apollo-server": "^3.13.0",
+    "class-validator": "^0.14.1",
     "graphql": "^15.8.0",
-    "graphql-scalars": "^1.22.4",
     "reflect-metadata": "^0.2.1",
     "type-graphql": "^1.1.1"
   }

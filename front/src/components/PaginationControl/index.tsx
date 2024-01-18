@@ -1,10 +1,10 @@
-import { PageProps } from "@/src/app/App";
-import { Dispatch, SetStateAction } from "react";
-import PageLink from "./PageLink";
+import { PageProps } from '@/src/app/App'
+import { Dispatch, SetStateAction } from 'react'
+import PageLink from './PageLink'
 export interface PaginationDataProps {
-  currentPage: number;
-  pages: Array<PageProps>;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
+  currentPage: number
+  pages: Array<PageProps>
+  setCurrentPage: Dispatch<SetStateAction<number>>
 }
 
 function PaginationControl({
@@ -16,7 +16,9 @@ function PaginationControl({
     <div className="flex rounded bg-neutral-800">
       {pages.map((page) => (
         <PageLink
-          key={`pag${page.pag}`}
+          key={
+            page.pag ? `pag${page.pag}` : `${Math.floor(Math.random() * 100)}`
+          }
           isAvailable={page?.pag}
           currentPageHandler={() => setCurrentPage(page.pag)}
           isCurrentPage={page.pag === currentPage}
@@ -24,7 +26,7 @@ function PaginationControl({
         />
       ))}
     </div>
-  );
+  )
 }
 
-export default PaginationControl;
+export default PaginationControl

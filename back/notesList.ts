@@ -1,4 +1,4 @@
-export interface NotesListProps {
+interface NotesListProps {
   id: number;
   name: string;
   value: number;
@@ -2890,4 +2890,4 @@ const notesList: NotesListProps[] = [
   },
 ];
 
-export default notesList;
+export { notesList, NotesListProps };

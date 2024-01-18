@@ -1,6 +1,6 @@
-import { PageProps } from "@/src/app/App";
-import { NoteRow } from "./NoteRow";
-import { NoteHeader } from "./NoteHeader";
+import { PageProps } from '@/src/app/App'
+import { NoteRow } from './NoteRow'
+import { NoteHeader } from './NoteHeader'
 
 export default function NotesTable({ page }: { page: PageProps }) {
   return (
@@ -9,9 +9,9 @@ export default function NotesTable({ page }: { page: PageProps }) {
 
       <tbody className="">
         {page.content.map((note) => (
-          <NoteRow note={note} key={note.id} />
+          <NoteRow note={note} key={note.id + note.value} />
         ))}
       </tbody>
     </table>
-  );
+  )
 }
