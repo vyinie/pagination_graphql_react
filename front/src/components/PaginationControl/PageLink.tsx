@@ -4,7 +4,7 @@ export default function PageLink({
   currentPageHandler,
   isAvailable,
 }: {
-  isAvailable: number
+  isAvailable: boolean
   isCurrentPage: boolean
   pagNum: number
   currentPageHandler: () => void

@@ -12,6 +12,12 @@ type NoteModel {
   value: Float!
 }
 
+type NotePageModel {
+  content: [NoteModel!]!
+  pag: Float!
+}
+
 type Query {
-  Notes: [NoteModel!]!
+  Notes(name: String!): String!
+  Pages(currentPage: Float!): [NotePageModel!]!
 }
