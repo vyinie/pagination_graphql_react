@@ -18,6 +18,5 @@ type NotePageModel {
 }
 
 type Query {
-  Notes(name: String!): String!
-  Pages(currentPage: Float!): [NotePageModel!]!
+  Pages(limitPerPage: Int!, pagesRequested: Int!): [NotePageModel!]!
 }

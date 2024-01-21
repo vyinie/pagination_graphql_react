@@ -1,7 +1,10 @@
 import NotesTable from '../components/NotesTable'
+import notesList from '@/src/db/NotesList.json'
+import pages from '@/src/db/pages.json'
 import PaginationControl from '../components/PaginationControl'
 import { useState } from 'react'
 import { gql, useQuery } from '@apollo/client'
+import { Paginator } from '../functions/paginator'
 
 export interface NoteProps {
   id: number
@@ -16,9 +19,11 @@ export interface PageProps {
   content: NoteProps[]
 }
 
+const paginator = new Paginator(notesList, 15)
+
 function App() {
   const [currentPage, setCurrentPage] = useState(1)
-  const GET_NOTES_PAGE = gql`
+  /*   const GET_NOTES_PAGE = gql`
     query PaginatedNotes {
       Pages(currentPage: ${currentPage}) {
         content {
@@ -34,14 +39,16 @@ function App() {
     }
   `
   const { data, loading } = useQuery(GET_NOTES_PAGE)
+  */
 
-  const [loadedPages, setLoadedPages] = useState<PageProps[]>(data?.Pages)
+  // const [loadedPages, setLoadedPages] = useState<PageProps[]>()
+  const loadedPages = pages
 
   const selectedPages = loadedPages?.find((page) => page.pag === currentPage)
 
   return (
     <div className="grid h-full place-content-center place-items-center gap-2">
-      {loading ? <div>carregando...</div> : <NotesTable page={selectedPages} />}
+      <NotesTable page={selectedPages} />
 
       <PaginationControl
         pages={loadedPages}

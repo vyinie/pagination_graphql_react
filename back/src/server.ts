@@ -13,7 +13,7 @@ async function bootstrap() {
     emitSchemaFile: resolve(__dirname, "schema.gql"),
   });
 
-  const server = new ApolloServer({schema});
+  const server = new ApolloServer({ schema });
 
   const { url } = await server.listen();
   console.log(`running ${url} 🚀`);
