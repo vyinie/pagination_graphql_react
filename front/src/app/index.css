@@ -10,5 +10,5 @@
 html,
 body,
 #root {
-  @apply w-full h-full bg-neutral-700 text-neutral-300;
+  @apply w-full h-full bg-neutral-800 text-neutral-300;
 }

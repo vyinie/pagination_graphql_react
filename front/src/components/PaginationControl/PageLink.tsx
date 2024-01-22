@@ -4,10 +4,10 @@ export default function PageLink({
   currentPageHandler,
   isAvailable,
 }: {
-  isAvailable: number;
-  isCurrentPage: boolean;
-  pagNum: number;
-  currentPageHandler: () => void;
+  isAvailable: boolean
+  isCurrentPage: boolean
+  pagNum: number
+  currentPageHandler: () => void
 }) {
   if (isAvailable) {
     return (
@@ -15,13 +15,13 @@ export default function PageLink({
         onClick={currentPageHandler}
         key={pagNum}
         data-current-page={isCurrentPage}
-        className="grid h-7 w-7 cursor-pointer place-items-center rounded transition hover:bg-neutral-500 hover:font-bold data-[current-page=true]:bg-neutral-500"
+        className="grid h-7 w-7 cursor-pointer place-items-center rounded transition hover:bg-neutral-700 hover:font-bold data-[current-page=true]:bg-neutral-700"
       >
         {pagNum}
       </div>
-    );
+    )
   }
   return (
     <div className="grid h-7 w-7 cursor-default place-items-center">...</div>
-  );
+  )
 }

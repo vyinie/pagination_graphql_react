@@ -1,13 +1,6 @@
-export interface NotesListProps {
-  id: number;
-  name: string;
-  value: number;
-  class: string;
-  inFlow: boolean;
-  date: string;
-}
+import { NoteProps } from "./src/dtos/models/note-model";
 
-const notesList: NotesListProps[] = [
+const notesList: NoteProps[] = [
   {
     id: 101,
     name: "coisa 0101",
@@ -2890,4 +2883,4 @@ const notesList: NotesListProps[] = [
   },
 ];
 
-export default notesList;
+export { notesList };
