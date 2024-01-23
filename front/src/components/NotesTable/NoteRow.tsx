@@ -1,4 +1,4 @@
-import { NoteProps } from '@/src/app/App'
+import { NoteProps } from "@/src/interfaces";
 
 export function NoteRow({ note }: { note: NoteProps }) {
   return (

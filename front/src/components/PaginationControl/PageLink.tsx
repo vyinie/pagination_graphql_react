@@ -22,6 +22,6 @@ export default function PageLink({
     )
   }
   return (
-    <div className="grid h-7 w-7 cursor-default place-items-center">...</div>
+    <div className="grid h-7 w-7 cursor-default place-items-center text-center">...</div>
   )
 }

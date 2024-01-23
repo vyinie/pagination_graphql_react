@@ -1,15 +1,4 @@
-<<<<<<< HEAD
 import { NoteProps } from "./src/dtos/models/note-model";
-=======
-interface NotesListProps {
-  id: number;
-  name: string;
-  value: number;
-  class: string;
-  inFlow: boolean;
-  date: string;
-}
->>>>>>> origin
 
 const notesList: NoteProps[] = [
   {
@@ -2894,8 +2883,4 @@ const notesList: NoteProps[] = [
   },
 ];
 
-<<<<<<< HEAD
 export { notesList };
-=======
-export { notesList, NotesListProps };
->>>>>>> origin

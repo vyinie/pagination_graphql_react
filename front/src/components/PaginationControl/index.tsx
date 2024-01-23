@@ -1,20 +1,8 @@
-<<<<<<< HEAD
 import { Dispatch, SetStateAction, memo, useEffect } from 'react'
 import PageLink from './PageLink'
 import { NoteProps, PageProps } from '@/src/interfaces'
 import { gql, useQuery, useSuspenseQuery } from '@apollo/client'
 import { usePagination } from '@/src/functions/paginator'
-=======
-import { PageProps } from '@/src/app/App'
-import { Dispatch, SetStateAction } from 'react'
-import PageLink from './PageLink'
-
-export interface PaginationDataProps {
-  currentPage: number
-  pages: PageProps[]
-  setCurrentPage: Dispatch<SetStateAction<number>>
-}
->>>>>>> origin
 
 export interface PaginationDataProps {
   currentPage: number
@@ -46,10 +34,10 @@ const PaginationControl = ({
   const visiblePages = usePagination<NoteProps>(currentPage, pages)
 
   const requestPage = () => {
-    const index = currentPage - 1
+    const index = pages.findIndex((page) => page.pag === currentPage)
     const requestedPages: number[] = []
 
-    for (let wantedPageIndex = -2; wantedPageIndex <= 2; wantedPageIndex++) {
+    for (let wantedPageIndex = -4; wantedPageIndex <= 4; wantedPageIndex++) {
       const wantedPage = currentPage + wantedPageIndex
 
       if (
@@ -58,36 +46,31 @@ const PaginationControl = ({
         wantedPage < pages[pages.length - 1].pag
       ) {
         const exists = pages[index + wantedPageIndex]?.pag === wantedPage
+
         if (!exists) requestedPages.push(wantedPage)
       }
     }
+
+    console.log(pages)
+    console.log(requestedPages)
     return requestedPages
   }
   const pagesRequested = requestPage()
 
-  const query =
-    pagesRequested.length > 0 &&
-    useQuery<{ Pages: PageProps[] }>(GET_PAGES, {
-      variables: {
-        pagesRequested: pagesRequested,
-      },
-    })
-  const getPages = () => {
-    if (!query?.loading && query?.data) {
-      console.log(query.data.Pages)
-      let newPages = [...new Set([...pages, ...query.data.Pages])]
-      newPages = newPages.sort((a, b) => a.pag - b.pag)
-      setLoadedPages(newPages)
-    }
+  const query = useQuery<{ Pages: PageProps[] }>(GET_PAGES, {
+    variables: {
+      pagesRequested: pagesRequested,
+    },
+  })
+  const getPages = (newPages: PageProps[]) => {
+    const noDuplicatedPages = [...new Set([...pages, ...newPages])]
+    const sortedPages = noDuplicatedPages.sort((a, b) => a.pag - b.pag)
+    setLoadedPages(sortedPages)
   }
 
   return (
     <div className="flex rounded bg-neutral-800">
-<<<<<<< HEAD
       {visiblePages?.map((page) => (
-=======
-      {pages?.map((page) => (
->>>>>>> origin
         <PageLink
           key={
             page.pag > 0
@@ -95,14 +78,12 @@ const PaginationControl = ({
               : `${Math.floor(Math.random() * 100)}`
           }
           isAvailable={page.pag > 0}
-<<<<<<< HEAD
           currentPageHandler={() => {
             setCurrentPage(page.pag)
-            getPages()
+            if (!query?.loading && query?.data) {
+              getPages(query?.data.Pages)
+            }
           }}
-=======
-          currentPageHandler={() => setCurrentPage(page.pag)}
->>>>>>> origin
           isCurrentPage={page.pag === currentPage}
           pagNum={page.pag}
         />
@@ -111,8 +92,4 @@ const PaginationControl = ({
   )
 }
 
-<<<<<<< HEAD
 export { PaginationControl }
-=======
-export default PaginationControl
->>>>>>> origin

@@ -17,7 +17,6 @@ type NotePageModel {
   pag: Float!
 }
 
-<<<<<<< HEAD
 type PaginationDataModel {
   initialPages: [NotePageModel!]!
   numOfPages: Float!
@@ -26,8 +25,4 @@ type PaginationDataModel {
 type Query {
   BookData: PaginationDataModel!
   Pages(pagesRequested: [Float!]!): [NotePageModel!]!
-=======
-type Query {
-  Pages(limitPerPage: Int!, pagesRequested: Int!): [NotePageModel!]!
->>>>>>> origin
 }

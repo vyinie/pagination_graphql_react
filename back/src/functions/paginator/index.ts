@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 import { PageProps } from "../../dtos/models/note-page-model";
-=======
-export interface PageProps {
-  pag: number;
-  content: any[];
-}
->>>>>>> origin
 
 export class Paginator {
   private unordedList: any[];
@@ -16,23 +9,24 @@ export class Paginator {
     this.limitPerPage = limitPerPage || 10;
   }
 
-<<<<<<< HEAD
   specificPages(pagesRequested: number[]): PageProps[] {
     const pages: PageProps[] = [];
 
     pagesRequested.map((pageNum) => {
       const pageContent = [];
+      const numOfPages = Math.ceil(this.unordedList.length / this.limitPerPage);
 
       for (let itemOfPage = 0; itemOfPage < this.limitPerPage; itemOfPage++) {
         const itemIndex = (pageNum - 1) * this.limitPerPage + itemOfPage;
 
         pageContent.push(this.unordedList[itemIndex]);
       }
-
-      pages.push({
-        pag: pageNum,
-        content: pageContent.filter((page) => page),
-      });
+      if (pages.length < numOfPages) {
+        pages.push({
+          pag: pageNum,
+          content: pageContent.filter((page) => page),
+        });
+      }
     });
 
     return pages;
@@ -50,16 +44,6 @@ export class Paginator {
         pages.push({ content: [item], pag: pages.length });
       }
     });
-=======
-  pages(pagesRequested: number[]): PageProps[] {
-    const pages: PageProps[] = [];
-    pagesRequested.map((page) => {
-      pages.push({
-        content: [page/* this.unordedList[page - 1 * this.limitPerPage] */],
-        pag: page,
-      });
-    });
->>>>>>> origin
     return pages;
   }
 }

@@ -1,5 +1,4 @@
 import { Field, ObjectType } from "type-graphql";
-<<<<<<< HEAD
 export interface NoteProps {
   id: number;
   name: string;
@@ -8,9 +7,6 @@ export interface NoteProps {
   inFlow: boolean;
   date: string;
 }
-=======
-
->>>>>>> origin
 @ObjectType()
 export class NoteModel {
   @Field()
