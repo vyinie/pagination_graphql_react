@@ -1,8 +1,20 @@
+<<<<<<< HEAD
 import { Dispatch, SetStateAction, memo, useEffect } from 'react'
 import PageLink from './PageLink'
 import { NoteProps, PageProps } from '@/src/interfaces'
 import { gql, useQuery, useSuspenseQuery } from '@apollo/client'
 import { usePagination } from '@/src/functions/paginator'
+=======
+import { PageProps } from '@/src/app/App'
+import { Dispatch, SetStateAction } from 'react'
+import PageLink from './PageLink'
+
+export interface PaginationDataProps {
+  currentPage: number
+  pages: PageProps[]
+  setCurrentPage: Dispatch<SetStateAction<number>>
+}
+>>>>>>> origin
 
 export interface PaginationDataProps {
   currentPage: number
@@ -71,7 +83,11 @@ const PaginationControl = ({
 
   return (
     <div className="flex rounded bg-neutral-800">
+<<<<<<< HEAD
       {visiblePages?.map((page) => (
+=======
+      {pages?.map((page) => (
+>>>>>>> origin
         <PageLink
           key={
             page.pag > 0
@@ -79,10 +95,14 @@ const PaginationControl = ({
               : `${Math.floor(Math.random() * 100)}`
           }
           isAvailable={page.pag > 0}
+<<<<<<< HEAD
           currentPageHandler={() => {
             setCurrentPage(page.pag)
             getPages()
           }}
+=======
+          currentPageHandler={() => setCurrentPage(page.pag)}
+>>>>>>> origin
           isCurrentPage={page.pag === currentPage}
           pagNum={page.pag}
         />
@@ -91,4 +111,8 @@ const PaginationControl = ({
   )
 }
 
+<<<<<<< HEAD
 export { PaginationControl }
+=======
+export default PaginationControl
+>>>>>>> origin
